@@ -1,0 +1,61 @@
+<vector>
+using namespace std;
+
+class ctVector {
+public:
+                ctVector();
+                void plusone();
+                void show();
+                void randomize();
+private:
+                vector<int> crt;
+                int size;
+};
+
+ 
+
+ctVector::ctVector()
+{
+                crt.reserve(10);
+                size=10;
+}
+
+ 
+
+void ctVector::plusone()
+{
+                ++size;
+                vector<int> copy1(size);
+                copy1.swap(crt);
+                crt.resize(size);
+                for(int i=0;i<(size-1);++i)
+                crt[i] = copy1[i];
+}
+
+ 
+
+void ctVector::show()
+{
+                for(int i=0;i<size;++i)
+                printf("#%d|value=%d\n", i, crt[i]);
+                printf("end of vector/massive\n");
+}
+
+void ctVector::randomize()
+{
+	for(int i=0;i<size;++i)
+	crt[i]=rand()%100+1;
+}
+
+ 
+
+int main()
+{
+                ctVector wrd;
+                wrd.randomize();
+                wrd.show();
+                wrd.plusone();
+                wrd.show();
+                wrd.plusone();
+                wrd.show();
+}
